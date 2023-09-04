@@ -1,0 +1,28 @@
+diff --git a/node_modules/expo-datadog/build/plugin/withIosSourcemaps/withIosSourcemaps.js b/node_modules/expo-datadog/build/plugin/withIosSourcemaps/withIosSourcemaps.js
+index 9d4b7e8..6e7547b 100644
+--- a/node_modules/expo-datadog/build/plugin/withIosSourcemaps/withIosSourcemaps.js
++++ b/node_modules/expo-datadog/build/plugin/withIosSourcemaps/withIosSourcemaps.js
+@@ -7,7 +7,7 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const config_plugins_1 = require("@expo/config-plugins");
+ const SOURCEMAP_FILE_COMMAND = "export SOURCEMAP_FILE=./main.jsbundle.map";
+-const DATADOG_XCODE_COMMAND = `../node_modules/.bin/datadog-ci react-native xcode \`\\\"$NODE_BINARY\\\" --print \\\"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'\\\"\``;
++const DATADOG_XCODE_COMMAND = `../node_modules/.bin/datadog-ci react-native xcode --disable-git \`\\\"$NODE_BINARY\\\" --print \\\"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'\\\"\``;
+ const withIosSourcemaps = (config) => {
+     return (0, config_plugins_1.withXcodeProject)(config, async (config) => {
+         const xcodeProject = config.modResults;
+diff --git a/node_modules/expo-datadog/src/plugin/withIosSourcemaps/withIosSourcemaps.ts b/node_modules/expo-datadog/src/plugin/withIosSourcemaps/withIosSourcemaps.ts
+index b0404a4..305b9f8 100644
+--- a/node_modules/expo-datadog/src/plugin/withIosSourcemaps/withIosSourcemaps.ts
++++ b/node_modules/expo-datadog/src/plugin/withIosSourcemaps/withIosSourcemaps.ts
+@@ -7,8 +7,8 @@
+ import type { ConfigPlugin } from "@expo/config-plugins";
+ import { withXcodeProject } from "@expo/config-plugins";
+ 
+-const SOURCEMAP_FILE_COMMAND = "export SOURCEMAP_FILE=./main.jsbundle.map";
+-const DATADOG_XCODE_COMMAND = `../node_modules/.bin/datadog-ci react-native xcode \`\\\"$NODE_BINARY\\\" --print \\\"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'\\\"\``;
++const SOURCEMAP_FILE_COMMAND = "pwd; export SOURCEMAP_FILE=./main.jsbundle.map";
++const DATADOG_XCODE_COMMAND = `../node_modules/.bin/datadog-ci react-native xcode --disable-git \`\\\"$NODE_BINARY\\\" --print \\\"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'\\\"\``;
+ 
+ const withIosSourcemaps: ConfigPlugin<void> = (config) => {
+   return withXcodeProject(config, async (config) => {

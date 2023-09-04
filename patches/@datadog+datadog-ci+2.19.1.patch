@@ -1,0 +1,13 @@
+diff --git a/node_modules/@datadog/datadog-ci/dist/commands/react-native/xcode.js b/node_modules/@datadog/datadog-ci/dist/commands/react-native/xcode.js
+index 95876f7..eb262c2 100644
+--- a/node_modules/@datadog/datadog-ci/dist/commands/react-native/xcode.js
++++ b/node_modules/@datadog/datadog-ci/dist/commands/react-native/xcode.js
+@@ -175,7 +175,7 @@ class XCodeCommand extends clipanion_1.Command {
+         };
+         this.getSourcemapsLocation = () => {
+             if (process.env.SOURCEMAP_FILE) {
+-                return `${process.env.SOURCEMAP_FILE}`;
++                return path_1.join('..', `${process.env.SOURCEMAP_FILE}`);
+             }
+             if (process.env.EXTRA_PACKAGER_ARGS) {
+                 const splitArguments = process.env.EXTRA_PACKAGER_ARGS.split(' ');
