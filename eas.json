@@ -1,0 +1,17 @@
+{
+  "cli": {
+    "version": ">= 5.0.2",
+    "promptToConfigurePushNotifications": false
+  },
+  "build": {
+    "production": {
+      "ios": {
+        "distribution": "internal"
+      },
+      "credentialsSource": "local"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

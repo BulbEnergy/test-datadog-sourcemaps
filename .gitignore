@@ -33,3 +33,10 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# Non-defaults
+build-*.tar.gz
+build-*.ipa
+credentials.json
+ios
+android

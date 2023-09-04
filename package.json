@@ -1,18 +1,23 @@
 {
-  "name": "eg-datadog",
+  "name": "test-datadog-sourcemaps",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "build": "rm -rf /tmp/eas-local-build; EAS_LOCAL_BUILD_WORKINGDIR=/tmp/eas-local-build EAS_LOCAL_BUILD_SKIP_CLEANUP=1 eas build --platform ios --local --profile production",
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "dependencies": {
-    "expo": "~49.0.8",
-    "expo-status-bar": "~1.6.0",
+    "@datadog/datadog-ci": "^2.19.1",
+    "@datadog/mobile-react-native": "^1.8.2",
+    "expo": "~48.0.18",
+    "expo-datadog": "^49.0.0",
+    "expo-splash-screen": "~0.18.2",
+    "expo-status-bar": "~1.4.4",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "react": "18.2.0",
-    "react-native": "0.72.4"
+    "react-native": "0.71.8"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
