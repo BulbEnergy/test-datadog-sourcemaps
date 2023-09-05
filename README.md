@@ -1,13 +1,10 @@
 # Test Datadog Sourcemaps
 
-An example demonstrating a pair of bugs and patches with `expo-datadog` and `@datadog/datadog-ci` in the iOS distribution build.
+An example demonstrating a bug and patch of `@datadog/datadog-ci` in the iOS distribution build.
 
 ## Steps
 
-This repo contains a blank Expo go project with the `expo-datadog` plugin to uploads sourcemaps to Datadog. There are two issues in the dependent packages:
-
-- The `expo-datadog` xcode script assumes that it is being run in a `git` repo, but this isn't the case for an EAS build.
-- The `@datadog/datadog-ci` script looks in the wrong place for the generated bundle sourcemap file.
+This repo contains a blank Expo go project with the `expo-datadog` plugin to uploads sourcemaps to Datadog. However, the `@datadog/datadog-ci` script is looking in the wrong place for the generated bundle sourcemap file.
 
 ## To run the build and see the errors
 
@@ -52,7 +49,7 @@ index 06096b1..99ce8bb 100644
      "android": "expo run:android",
 ```
 
-Run `yarn build` again. This will apply a monkey-patch to `expo-datadog` to `--disable-git`, and a patch to the local path of the outputted source map in `@datadog/datadog-ci`. The build should pass, and the outputted `testdatadogsourcemaps-testdatadogsourcemaps.log` file will contain:
+Run `yarn build` again. This will apply a monkey-patch to the local path of the outputted source map in `@datadog/datadog-ci`. The build should pass, and the outputted `testdatadogsourcemaps-testdatadogsourcemaps.log` file will contain:
 
 ```
 Upload of ../main.jsbundle.map for bundle main.jsbundle on platform ios with project path /private/tmp/eas-local-build/build/ios
